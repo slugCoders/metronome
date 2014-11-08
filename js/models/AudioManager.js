@@ -4,7 +4,7 @@ AudioManager.prototype.construct= AudioManager;
 function AudioManager(conf,actVol){
 	this.Config = conf;
 	var actualVolume = actVol;
-}
+};
 
 AudioManager.prototype.start = function(){
 	//TODO
