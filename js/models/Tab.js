@@ -1,10 +1,10 @@
 //This class manage tab function actived by user
 var Tab = (function () {
 //Constructor
-car constructor = function(){
+car constructor = function(bps,nst){
 	//private
-	var beatPerSecond = 0;
-	var nSecondsTabs = {0,0};
+	var beatPerSecond = bps;
+	var nSecondsTabs = nst;
 	var active = false;
 
 	//Getters and Setters
