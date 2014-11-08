@@ -15,7 +15,7 @@ AudioManager.prototype.stop = function(){
 };
 
 AudioManager.prototype.isVolumeConfigChange = function(){
-	if(Config.getVolume != actualVolume){
+	if(Config.getVolume() != actualVolume){
 		return true;
 	} else {
 		return false;
