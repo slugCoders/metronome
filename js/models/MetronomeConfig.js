@@ -13,9 +13,9 @@ var MetronomeConfig = (function(){
 		var dimension = dim;
 		var beat = bt;
 		//Object of the library
-		var sounds = snd;
+		var Sounds = snd;
 		//Object tab
-		var tab = tb;
+		var Tab = tb;
 
 		//Getters and Setters
 		this.getTempo = function(){
