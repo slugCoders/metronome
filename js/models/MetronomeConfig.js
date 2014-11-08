@@ -11,6 +11,7 @@ var MetronomeCOnfig = (function(){
 		var volume = vol;
 		//Array with width and heigh
 		var dimension = dim;
+		var beat = bt;
 		//Object of the library
 		var sounds = snd;
 		//Object tab
@@ -33,6 +34,10 @@ var MetronomeCOnfig = (function(){
 			return dimension;
 		};
 
+		this.getBeat = function(){
+			return beat;
+		};
+
 		this.getSounds = function(){
 			return sounds;
 		};
@@ -41,28 +46,32 @@ var MetronomeCOnfig = (function(){
 			return tab;
 		};
 
-		this.setTempo = function(temp){
-			tempo = temp;
+		this.setTempo = function(tmp){
+			tempo = tmp;
 		};
 
-		this.setNotes = function(nts){
-			notes = nts;
+		this.setNotes = function(not){
+			notes = not;
 		};
 
-		this.setVolume = function(vlm){
-			volume = vlm;
+		this.setVolume = function(vol){
+			volume = vol;
 		};
 
-		this.setDimension = function(dims){
-			dimension = dims;
+		this.setDimension = function(dim){
+			dimension = dim;
 		};
 
-		this.setSounds = function(snds){
-			sounds = snds;
+		this.setBeat = function(bt){
+			beat = bt;
+		};
+		
+		this.setSounds = function(snd){
+			sounds = snd;
 		};
 
-		this.setTab = function(tbs){
-			tab = tbs;
+		this.setTab = function(tb){
+			tab = tb;
 		};
 	};
 
