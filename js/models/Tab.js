@@ -1,7 +1,7 @@
 //This class manage tab function actived by user
 var Tab = (function () {
 //Constructor
-car constructor = function(bps,nst){
+var constructor = function(bps,nst){
 	//private
 	var beatPerSecond = bps;
 	var nSecondsTabs = nst;
