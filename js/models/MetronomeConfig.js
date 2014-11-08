@@ -2,7 +2,7 @@ import Tab;
 //TODO import Sound Class
 
 //This class save all config info of the app
-var MetronomeCOnfig = (function(){
+var MetronomeConfig = (function(){
 	//Constructor
 	var constructor = function(tmp,not,vol,dim,bt,snd,tb){
 		var tempo = tmp;
@@ -65,7 +65,7 @@ var MetronomeCOnfig = (function(){
 		this.setBeat = function(bt){
 			beat = bt;
 		};
-		
+
 		this.setSounds = function(snd){
 			sounds = snd;
 		};
