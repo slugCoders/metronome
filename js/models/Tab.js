@@ -1,7 +1,7 @@
 
 //This class manage tab function actived by user
 var Tab = Backbone.Model.extend({
-	beatPerSecond:100,
+	beatPerSecond:2,
 	nSecondsTabs:[2.5,2]
 	actve:false,
 	beatsAvarage: function(){
