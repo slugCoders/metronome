@@ -1,26 +1,37 @@
-// Manager is an Abstract class. Is a superclass that is used by Pendulum.js, LightsManager.js and AudioManger.js
-var Manager = (function(){
-	//Constructor
-	var constructor = function(config){
-		//Is an MetronomeConfig Object
-		var Config = config;
 
-		//Getters and Setters
-		this.getConfig = function(){
-			return Config;
+var Manager = Backbone.Model.extend({function(){
+
+	defaults: function(){
+		return {
+			tempo: null,
+			rythm: null,
+			volume: null,
+			beat: null,
+			sound: null
 		};
+	}
 
-		this.setConfig = function(config){
-			Config = config;
-		};
-	};
+	start: function(){
 
-	Manager.prototype.start = function(){
-		return;
-	};
+	}
+	stop: function(){
 
-	Manager.prototype.stop = function(){
-		return;
+	}
+
+	loadSound:function (url) {
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+		request.responseType = 'arraybuffer';
+		//Falta repesar aquest metode perque es un event. Mirar si cal aquest event o podem posar el codi tal qual?
+		//request.onload = function() {
+    		// request.response is encoded... so decode it now
+    	//	context.decodeAudioData(request.response, function(buffer) {
+    	//	 sound = buffer;
+    	//	}, function(err) {
+      	//	throw new Error(err);
+    	//	});
+  		//}
+		//request.send();
 	}
 
 }); 
