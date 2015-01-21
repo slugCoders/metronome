@@ -1,6 +1,13 @@
 $(function(){
 	var AppView = Backbone.View.extend({
-		el: $("#todoapp")
+		el: $("#metronomeApp"),
+		events: {
+      		"click .play"   : "play",
+      		"change .tempo"  : "play",
+    	}
+    	play: function(){
+
+    	}
 	});
 	var App = new AppView();
 });
