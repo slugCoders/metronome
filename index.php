@@ -22,10 +22,10 @@ and open the template in the editor.
             <h1>Metronome</h1>
             <hr />
             <div class="page">
-                <form>
+                <form class="metronomeApp">
                     <label>bpm/tempo:</label>
-                    <input type="number" name="quantity" min="40" max="200" value="120" />
-                     <input type="button" value="Play" />
+                    <input id ="tempo" type="number" name="quantity" min="40" max="200" value="120" />
+                     <input id="play" type="button" value="Play" />
                      <input type="button" value="Stop" />
                 </form>
                 <!--<div>
