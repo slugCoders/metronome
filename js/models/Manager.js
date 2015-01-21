@@ -1,5 +1,5 @@
 $(function(){
-	var Manager = Backbone.Model.extend({function(){
+	var Manager = Backbone.Model.extend({
 
 		defaults: function(){
 			return {
@@ -9,14 +9,14 @@ $(function(){
 				beat: null,
 				sound: null
 			};
-		}
+		},
 
 		start: function(){
 			//TODO
-		}
+		},
 		stop: function(){
 			//TODO
-		}
+		},
 
 		loadSound:function (url) {
 			var request = new XMLHttpRequest();
@@ -32,7 +32,7 @@ $(function(){
 	    		});
 	  		}
 			request.send();
-		}
+		},
 
 		playSound: function(buffer, time) {
 	    	var source = context.createBufferSource();
@@ -41,8 +41,7 @@ $(function(){
 	    	if (!source.start)
 	      		source.start = source.noteOn;
 			source.start(time);
-		}
-
-		return Manager;
-}); 
+		},
+	}); 
+	return Manager;
 });
