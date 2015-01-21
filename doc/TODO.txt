@@ -1,10 +1,12 @@
 MODELS:
 	He començat a codificar el model Manager.
-	Falta: 
-		Manager.js:
-			- loadSound() implementat
-			- playSound() implementat
-			- Impementar Start
-				- Aqui s'ha de fer el play de web audio i fer funcionar el loop correctament. Amb la configuració adequada. 
-			- Implementar Stop
+	Manager.js:
+		- loadSound() implementat
+		- playSound() implementat
+		- Impementar Start
+			- Aqui s'ha de fer el play de web audio i fer funcionar el loop correctament. Amb la configuració adequada. 
+		- Implementar Stop
+VIEWS:
+	View.js:
+		-Començat falta implementar-ho tot
 
