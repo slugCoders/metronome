@@ -12,7 +12,7 @@ $(function(){
 		},
 
 		start: function(){
-			//TODO
+			console.log("PLAY Manager");
 		},
 		stop: function(){
 			//TODO

@@ -12,9 +12,9 @@ and open the template in the editor.
         
         <!--<link rel="icon" type="image/png" href="">-->
         
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">     
+        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->    
         <!-- mixer css --> 
-        <link rel="stylesheet" href="assets/css/metronome.css">
+        <!--<link rel="stylesheet" href="assets/css/metronome.css">-->
         
     </head>
     <body> 
@@ -47,11 +47,12 @@ and open the template in the editor.
         
 
         
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-        
+        <script src="js/lib/jquery-1.11.1.js"></script>
+        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>-->
+        <script src="js/lib/underscore.js"></script>
+        <script src="js/lib/backbone.js"></script>
+        <script src="js/models/Manager.js"></script>
+        <script src="js/views/View.js"></script>
     </body>
 </html>
 
