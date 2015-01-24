@@ -9,7 +9,6 @@ and open the template in the editor.
         <title>Metronome</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <!--<link rel="icon" type="image/png" href="">-->
         
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->    
@@ -46,13 +45,13 @@ and open the template in the editor.
         </div>
         
 
-        
-        <script src="js/lib/jquery-1.11.1.js"></script>
-        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>-->
+        <script data-main="js/app.js" src="js/lib/require.js"></script>
+        <!--<script src="js/lib/jquery-1.11.1.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
         <script src="js/lib/underscore.js"></script>
         <script src="js/lib/backbone.js"></script>
         <script src="js/models/Manager.js"></script>
-        <script src="js/views/View.js"></script>
+        <script src="js/views/View.js"></script>-->
     </body>
 </html>
 

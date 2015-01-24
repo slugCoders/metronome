@@ -1,4 +1,4 @@
-$(function(){
+define(['underscore','backbone'], function(_, Backbone) {
 	var Manager = Backbone.Model.extend({
 
 		defaults: function(){
@@ -41,7 +41,7 @@ $(function(){
 	    	if (!source.start)
 	      		source.start = source.noteOn;
 			source.start(time);
-		},
+		}
 	}); 
 	return Manager;
 });

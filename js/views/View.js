@@ -1,15 +1,24 @@
-$(function(){
-	var Manager = new Manager;
-	var AppView = Backbone.View.extend({
+require([
+    'jquery',
+    'underscore',
+    'backbone',
+    'models/Manager'
+  ], function($,_,Backbone, Manager) {
+	var View = Backbone.View.extend({
 		el: $(".metronomeApp"),
 		events: {
-      		"click #play": "play",
-      		"change #tempo": "play"
-    	},
-    	play: function(){
-    		console.log("PLAY");
-    		Manager.start();
-    	}
+			"click #play": "play",
+			"change #tempo": "play"
+		},
+		initialize: function(){
+			console.log("View");
+			this.model = new Manager();
+			this.model.start();
+		},
+		play: function(){
+			console.log("PLAY");
+			model.start();
+		}
 	});
-	var App = new AppView;
+	return View;
 });
