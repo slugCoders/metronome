@@ -1,11 +1,11 @@
 define([
-    "jquery",
-    "jquery.alpha",
-    "jquery.beta",
     "underscore",
     "backbone",
     "app/views/view",
-  ], function($,_,Backbone,MainView,Manager) {
+     "jquery-1.11.2.min",
+    "jquery.alpha",
+    "jquery.beta"
+  ], function(_,Backbone,MainView,Manager,$) {
     var Router = Backbone.Router.extend({
       routes: {
         "": "main"
