@@ -14,7 +14,7 @@ and open the template in the editor.
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->    
         <!-- mixer css --> 
         <!--<link rel="stylesheet" href="assets/css/metronome.css">-->
-        
+        <script data-main="js/app" src="js/lib/require.js"></script>
     </head>
     <body> 
         <div class="container">
@@ -45,7 +45,7 @@ and open the template in the editor.
         </div>
         
 
-        <script data-main="js/app.js" src="js/lib/require.js"></script>
+        
         <!--<script src="js/lib/jquery-1.11.1.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
         <script src="js/lib/underscore.js"></script>
