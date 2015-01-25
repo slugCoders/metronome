@@ -1,10 +1,11 @@
 define([
-    'lib/jquery-1.11.1',
-    'lib/underscore',
-    'lib/backbone',
-    'views/view',
-    'models/manager'
-  ], function($,_,Backbone,View,Manager) {
+    "jquery",
+    "jquery.alpha",
+    "jquery.beta",
+    "underscore",
+    "backbone",
+    "app/views/view",
+  ], function($,_,Backbone,MainView,Manager) {
     var Router = Backbone.Router.extend({
       routes: {
         "": "main"
@@ -13,7 +14,7 @@ define([
     var initialize = function(){
         var router = new Router;
         router.on('main',function(){
-          var view = new View;
+          var view = new MainView;
           console.log('Router');
         });
         Backbone.history.start();

@@ -1,14 +1,18 @@
-define([
-  'lib/jquery-1.11.1',
-  'lib/underscore',
-  'lib/backbone',
-  'router/router', // Request router.js
-], function($, _, Backbone, Router){
-  var initialize = function(){
-    // Pass in our Router module and call it's initialize function
-    Router.initialize();
-  };
-  return {
-    initialize: initialize
-  };
+// Place third party dependencies in the lib folder
+//
+// Configure loading modules from the lib directory,
+// except 'app' ones,
+requirejs.config({
+"baseUrl": "js/lib",
+"paths": {
+"app": "../app",
+"underscore": 'underscore',
+"backbone": 'backbone'
+},
+"shim": {
+"jquery.alpha": ["jquery-1.11.2.min"],
+"jquery.beta": ["jquery-1.11.2.min"]
+}
 });
+// Load the main app module to start the app
+requirejs(["app/router/router"]);

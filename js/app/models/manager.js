@@ -1,6 +1,6 @@
 define([
-	'lib/underscore',
-	'lib/backbone'
+    "underscore",
+    "backbone"
 	], function(_, Backbone) {
 	var Manager = Backbone.Model.extend({
 

@@ -1,10 +1,13 @@
 define([
-    'lib/jquery-1.11.1',
-    'lib/underscore',
-    'lib/backbone',
-    'models/manager'
-  ], function($,_,Backbone, Manager){
-	var View = Backbone.View.extend({
+	"jquery-1.11.2.min",
+    "jquery.alpha",
+    "jquery.beta",
+    "underscore",
+    "backbone",
+    "app/models/manager"
+  ],
+  function($,_,Backbone,Manager){
+	var MainView = Backbone.View.extend({
 		el:$("#metronomeApp"),
 		events: {
 			"click #play": "play",
@@ -20,5 +23,5 @@ define([
 			model.start();
 		}
 	});
-	return View;
+	return MainView;
 });
