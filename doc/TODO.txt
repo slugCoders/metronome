@@ -9,4 +9,4 @@ MODELS:
 VIEWS:
 	View.js:
 		-Començat falta implementar-ho tot
-
+APP: require.js en funcionament.
