@@ -1,7 +1,7 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone',
+    'lib/jquery-1.11.1',
+    'lib/underscore',
+    'lib/backbone',
     'views/view',
     'models/manager'
   ], function($,_,Backbone,View,Manager) {

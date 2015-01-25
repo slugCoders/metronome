@@ -21,7 +21,7 @@ and open the template in the editor.
             <h1>Metronome</h1>
             <hr />
             <div class="page">
-                <form class="metronomeApp">
+                <form id="metronomeApp">
                     <label>bpm/tempo:</label>
                     <input id ="tempo" type="number" name="quantity" min="40" max="200" value="120" />
                      <input id="play" type="button" value="Play" />
