@@ -2,27 +2,25 @@
 //
 // Configure loading modules from the lib directory,
 // except 'app' ones,
-requirejs.config({
-  "baseUrl": "js/lib",
-  "paths": {
-    "app": "../app",
-    "underscore": 'underscore',
-    "backbone": 'backbone'
+require.config({
+  baseUrl: 'js/lib',
+  paths: {
+    app: '../app',
   },
-  "shim": {
-   "underscore": {
-     "exports": '_'
+  shim: {
+   underscore: {
+     exports: '_'
    },
-   "backbone": {
-     "deps": [
+   backbone: {
+     deps: [
        'underscore',
-       'jquery-1.11.2.min'
+       'jquery'
      ],
-     exports: 'Backbone'
+     exports: 'backbone'
    },
-   "jquery.alpha": ["jquery-1.11.2.min"],
-   "jquery.beta": ["jquery-1.11.2.min"]
   }
 });
-// Load the main app module to start the app
-requirejs(["app/router/router"]);
+require(['jquery', 'backbone', 'app/router/router'], function ($, Backbone, Router) {
+  var router = new Router();
+  Backbone.history.start();
+});

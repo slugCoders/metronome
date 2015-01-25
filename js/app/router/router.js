@@ -1,25 +1,17 @@
-define([
-    "underscore",
-    "backbone",
-    "app/views/view",
-     "jquery-1.11.2.min",
-    "jquery.alpha",
-    "jquery.beta"
-  ], function(_,Backbone,MainView,Manager,$) {
-    var Router = Backbone.Router.extend({
+define(function(require){
+  "use strict";
+  var $ = require('jquery'),
+      _ = require('underscore'),
+      Backbone = require('backbone'),
+      MainView = require('app/views/view'),
+      mainView = new MainView;
+
+  return Backbone.Router.extend({
       routes: {
         "": "main"
-      }
-    });
-    var initialize = function(){
-        var router = new Router;
-        router.on('main',function(){
-          var view = new MainView;
+      },
+      main: function(){
           console.log('Router');
-        });
-        Backbone.history.start();
-    };
-    return {
-       initialize: initialize
-    };
+      }
+  });
 });

@@ -1,8 +1,9 @@
-define([
-    "underscore",
-    "backbone"
-	], function(_, Backbone) {
-	var Manager = Backbone.Model.extend({
+define(function(require){
+    var $ = require('jquery'),
+    	_ = require('underscore'),
+    	Backbone = require('backbone');
+	
+	return Backbone.Model.extend({
 
 		defaults: function(){
 			return {
@@ -46,5 +47,4 @@ define([
 			source.start(time);
 		}
 	}); 
-	return Manager;
 });
