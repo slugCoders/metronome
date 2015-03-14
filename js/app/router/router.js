@@ -1,17 +1,19 @@
 define(function(require){
   "use strict";
-  var $ = require('jquery'),
-      _ = require('underscore'),
-      Backbone = require('backbone'),
-      MainView = require('app/views/view'),
-      mainView = new MainView;
-
+  var Backbone = require('backbone'),
+      MainView = require('app/views/view');
+      
+      /* En cas de necessitar utilitzar les llibreries jquery o underscore s'han de declarar
+       $ = require('jquery'),
+      _ = require('underscore'),*/
   return Backbone.Router.extend({
       routes: {
-        "": "main"
+        /*define the routes, when web page is in index is executed main function */
+        "": "main",
       },
       main: function(){
           console.log('Router');
+          var mainView = new MainView;
       }
   });
 });

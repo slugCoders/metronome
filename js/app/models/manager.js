@@ -6,6 +6,7 @@ define(function(require){
 	return Backbone.Model.extend({
 
 		defaults: function(){
+			/*This method is executed when model is instanciatet*/
 			return {
 				tempo: null,
 				rythm: null,
@@ -15,7 +16,7 @@ define(function(require){
 			};
 		},
 
-		start: function(){
+		play: function(){
 			console.log("PLAY Manager");
 		},
 		stop: function(){
@@ -23,6 +24,7 @@ define(function(require){
 		},
 
 		loadSound:function (url) {
+			/*WEB AUDIO*/
 			var request = new XMLHttpRequest();
 			request.open('GET', url, true);
 			request.responseType = 'arraybuffer';
@@ -39,6 +41,7 @@ define(function(require){
 		},
 
 		playSound: function(buffer, time) {
+			/*WEB AUDIO*/
 	    	var source = context.createBufferSource();
 	    	source.buffer = buffer;
 	    	source.connect(context.destination);
