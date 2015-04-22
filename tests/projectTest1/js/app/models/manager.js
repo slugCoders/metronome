@@ -10,10 +10,16 @@ define(function(require){
 	var Manager = Backbone.Model.extend({
 
 		initialize: function(){
-			console.log("init manager");
-			var beep1url = "audio/beep1.wav",
-			beep2url = "audio/beep2.wav";
-			this.playing =false;
+
+			// Global variables
+			playing =false;
+			this.tempo = 120; // BPM (beats per minute)
+			
+			// Local Variables
+			var beep1url = "audio/beep1.wav";
+			var beep2url = "audio/beep2.wav";
+			
+		
 
 
 			// Define context for compatible browsers, and load 2 sounds using BufferLoader Class.
@@ -28,9 +34,8 @@ define(function(require){
 		    this.bufferLoader = new BufferLoader(this.context,[beep1url,beep2url],this);
 	    	
 		},
-
 		bufferLoadCompleted : function(){
-			console.log("in bufferLoadCompleted");
+			console.log("in bufferLoadCompletedvvvv");
 	  		this.beep1 = this.bufferLoader.getBufferList()[0];
 	    	this.beep2 = this.bufferLoader.getBufferList()[1];
 		},
@@ -41,10 +46,11 @@ define(function(require){
 		// .conecta la font sonora amb la destinació del context.
 		// I amb .start sona el so, en funció d'un temps que li passem. 
 		playSound: function(buffer,time){
-			this.source = this.context.createBufferSource();
-	   		this.source.buffer = buffer;
-	    	this.source.connect(this.context.destination);
-	    	this.source.start(time);
+			audioSource = this.context.createBufferSource();
+
+	   		audioSource.buffer = buffer;
+	    	audioSource.connect(this.context.destination);
+	    	audioSource.start(time);
 	    	console.info("beep");
 		},
 
@@ -54,28 +60,30 @@ define(function(require){
 		// Primer extreu de l'array bufferList el sons i els asigna una variable,l'argument bufferList ve del boto del index.html
 		// Determina un temps StartTime
 		// Un Tempo i una negra
-		// En acavar dispara una sequencia de PlaySound (funció anterior que fa que soni el so)
+		// En acabar dispara una sequencia de PlaySound (funció anterior que fa que soni el so)
 		startPlayingRithm : function(){
 			console.log("StartPlayingRithm");
-			console.log(this.playing);
+			
 			if (this.playing) {
 		        this.playing = false;
-		        clearInterval(timer);
-		        this.source.stop();          
+		        clearInterval(timer);		           
 		    }else{
 		        this.playing = true;
-		        var startTime = this.context.currentTime;
-		        var tempo = 120; // BPM (beats per minute)
-		        var quarterNoteTime = 60 / tempo; // Determina negres
-		        var sCompas = quarterNoteTime *4 // Segons que dura un compas.
-
+		        var startTime = this.context.currentTime;		
+		        var quarterNoteTime = 60 / this.tempo; // Determina negres
+		        var sCompas = quarterNoteTime *4 // Segons que dura un compas
+			        
+			       
 		        this.playSound(this.beep2, startTime);
-		        this.playSound(this.beep1, startTime + 1*quarterNoteTime);
-		        this.playSound(this.beep1, startTime + 2*quarterNoteTime);
-		        this.playSound(this.beep1, startTime + 3*quarterNoteTime);        
+			    this.playSound(this.beep1, startTime + 1*quarterNoteTime);
+			    this.playSound(this.beep1, startTime + 2*quarterNoteTime);
+			    this.playSound(this.beep1, startTime + 3*quarterNoteTime);     
+			    
+
 		       	self = this;
-		        timer =  setInterval(function(){         
-		        	startTime = startTime + sCompas;        
+   		        timer =  setInterval(function(){         
+		        	startTime = startTime + sCompas; 
+		        	console.log(startTime)       
 
 		        	self.playSound(self.beep2, startTime);
 		            self.playSound(self.beep1, startTime + 1*quarterNoteTime);
@@ -83,7 +91,19 @@ define(function(require){
 		            self.playSound(self.beep1, startTime + 3*quarterNoteTime);
 		        },sCompas*1000);
 	    	};
-		}
+		},
+
+		// Modify Tempo
+		modTempo: function(i){
+			this.playing = false;
+			this.tempo = this.tempo+i;
+
+			clearInterval(timer);
+			this.startPlayingRithm();
+
+			console.log(this.tempo);
+		},
+		
 	});
 	return new Manager();	
 });
