@@ -55,6 +55,10 @@ define(function(require){
 		},
 
 
+		stopMetronome : function(){
+			clearInterval(timer);
+		},
+
 		// Plays Rhythm 1
 		// Aquesta funció determina el ritme
 		// Primer extreu de l'array bufferList el sons i els asigna una variable,l'argument bufferList ve del boto del index.html
@@ -64,44 +68,44 @@ define(function(require){
 		startPlayingRithm : function(){
 			console.log("StartPlayingRithm");
 			
-			if (this.playing) {
+			/*if (this.playing) {
 		        this.playing = false;
 		        clearInterval(timer);		           
-		    }else{
-		        this.playing = true;
-		        var startTime = this.context.currentTime;		
-		        var quarterNoteTime = 60 / this.tempo; // Determina negres
-		        var sCompas = quarterNoteTime *4 // Segons que dura un compas
-			        
-			       
-		        this.playSound(this.beep2, startTime);
-			    this.playSound(this.beep1, startTime + 1*quarterNoteTime);
-			    this.playSound(this.beep1, startTime + 2*quarterNoteTime);
-			    this.playSound(this.beep1, startTime + 3*quarterNoteTime);     
-			    
+		    }else{*/
+	        this.playing = true;
+	        var startTime = this.context.currentTime;		
+	        var quarterNoteTime = 60 / this.tempo; // Determina negres
+	        var sCompas = quarterNoteTime *4 // Segons que dura un compas
+		        
+		       
+	        this.playSound(this.beep2, startTime);
+		    this.playSound(this.beep1, startTime + 1*quarterNoteTime);
+		    this.playSound(this.beep1, startTime + 2*quarterNoteTime);
+		    this.playSound(this.beep1, startTime + 3*quarterNoteTime);     
+		    
 
-		       	self = this;
-   		        timer =  setInterval(function(){         
-		        	startTime = startTime + sCompas; 
-		        	console.log(startTime)       
+	       	var self = this;
+		    timer =  setInterval(function(){         
+	        	startTime = startTime + sCompas; 
+	        	console.log(startTime)       
 
-		        	self.playSound(self.beep2, startTime);
-		            self.playSound(self.beep1, startTime + 1*quarterNoteTime);
-		            self.playSound(self.beep1, startTime + 2*quarterNoteTime);
-		            self.playSound(self.beep1, startTime + 3*quarterNoteTime);
-		        },sCompas*1000);
-	    	};
+	        	self.playSound(self.beep2, startTime);
+	            self.playSound(self.beep1, startTime + 1*quarterNoteTime);
+	            self.playSound(self.beep1, startTime + 2*quarterNoteTime);
+	            self.playSound(self.beep1, startTime + 3*quarterNoteTime);
+	        },sCompas*1000);
+	    	/*};*/
 		},
 
 		// Modify Tempo
 		modTempo: function(i){
-			this.playing = false;
-			this.tempo = this.tempo+i;
-
-			clearInterval(timer);
-			this.startPlayingRithm();
-
+			this.stopMetronome();
 			console.log(this.tempo);
+			this.tempo = this.tempo+i;
+			var self = this
+			setTimeout(function(){
+				self.startPlayingRithm();
+			},1000);
 		},
 		
 	});
