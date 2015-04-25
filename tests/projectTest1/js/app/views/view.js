@@ -25,7 +25,7 @@ define(function(require){
 
 		play: function(){
 			console.log("PLAY");
-			this.model.startPlayingRithm();
+			this.model.playMetronome();
 		},
 		stop: function(){
 			console.log("STOP");
