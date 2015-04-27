@@ -18,15 +18,10 @@ define(function(require){
 			//Nota actual dins de les 4 notes del compas
 			//El valor canviara si es canvia el compas de moment nomes seran 4 notes. valor entre 0 i 3.
 			this.currentNote = 0; 
-			//Timer de la següent nota
-			this.nextNoteTime = 0.0;
 
 			// Local Variables
 			var beep1url = "audio/beep1.wav";
 			var beep2url = "audio/beep2.wav";
-			
-		
-
 
 			// Define context for compatible browsers, and load 2 sounds using BufferLoader Class.
 			try {
@@ -40,145 +35,61 @@ define(function(require){
 		    this.bufferLoader = new BufferLoader(this.context,[beep1url,beep2url],this);
 	    	
 		},
-		getSCompas: function(){
-			return this.sCompas;
-		},
 		bufferLoadCompleted : function(){
 			console.log("in bufferLoadCompletedvvvv");
 	  		this.beep1 = this.bufferLoader.getBufferList()[0];
 	    	this.beep2 = this.bufferLoader.getBufferList()[1];
 		},
-
-		// Aquesta funció crea la font sonora , reb per arguments el Buffer, i time. 
-		// Primer crea una font del tipus BufferSource ,ja que carreguem un so des d'un directori.
-		// Asigna el .buffer, al parametre buffer(so) que li passem com argument. ve de la funció de mes avall StartPlayingRithm.
-		// .conecta la font sonora amb la destinació del context.
-		// I amb .start sona el so, en funció d'un temps que li passem. 
-		/*playSound: function(buffer,time){
-			audioSource = this.context.createBufferSource();
-
-	   		audioSource.buffer = buffer;
-	    	audioSource.connect(this.context.destination);
-	    	audioSource.start(time);
-	    	console.info("beep");
-		},*/
-		playSound: function(currentNote,time){
-			
-			audioSource = this.context.createBufferSource();
-			audioSource.connect(this.context.destination);
-
-			if (currentNote == 0 ){ // quarter notes = medium pitch
-				console.log("NOTA");
-				audioSource.buffer =this.beep2;
-			}else{ // other 16th notes = high pitch
-				audioSource.buffer =this.beep1;
-			}
-			audioSource.start(time);
-	    	console.info("beep");
-			/*console.log("STOP 1");
-			osc.stop(time + 1);*/
-			/*audioSource = this.context.createBufferSource();
-			if (currentNote == 0){
-				audioSource.buffer = this.beep2;
-			} else {
-				audioSource.buffer = this.beep1;
-			}
-	   		
-	    	audioSource.connect(this.context.destination);
-	    	audioSource.start(time);*/
-	    	/*audioSource.stop(time + 0.05);*/
-	    	/*console.info("beep");*/
-		},
-
-		stopMetronome : function(){
-			this.playing = !this.playing;
-			clearInterval(this.timerID);
-		},
-
-		// Plays Rhythm 1
-		// Aquesta funció determina el ritme
-		// Primer extreu de l'array bufferList el sons i els asigna una variable,l'argument bufferList ve del boto del index.html
-		// Determina un temps StartTime
-		// Un Tempo i una negra
-		// En acabar dispara una sequencia de PlaySound (funció anterior que fa que soni el so)
-		/*startPlayingRithm : function(){
-			console.log("StartPlayingRithm");
-			
-			if (this.playing) {
-		        this.playing = false;
-		        clearInterval(timer);		           
-		    }else{
-	        this.playing = true;
-	        var startTime = this.context.currentTime;		
-	        var quarterNoteTime = 60 / this.tempo; // Determina negres
-	        var sCompas = quarterNoteTime *4 // Segons que dura un compas
-		        
-		    
-	        this.playSound(this.beep2, startTime);
-		    this.playSound(this.beep1, startTime + 1*quarterNoteTime);
-		    this.playSound(this.beep1, startTime + 2*quarterNoteTime);
-		    this.playSound(this.beep1, startTime + 3*quarterNoteTime);     
-		    
-
-	       	var self = this;
-		    timer =  setInterval(function(){         
-	        	startTime = startTime + sCompas; 
-	        	console.log(startTime)       
-
-	        	self.playSound(self.beep2, startTime);
-	            self.playSound(self.beep1, startTime + 1*quarterNoteTime);
-	            self.playSound(self.beep1, startTime + 2*quarterNoteTime);
-	            self.playSound(self.beep1, startTime + 3*quarterNoteTime);
-	        },sCompas*1000);
-	    	};
-		},*/
-		nextNote:function() {
-			// Advance current note and time by a 16th note...
-			this.quarterNoteTime = 60.0 / this.tempo; // Notice this picks up the CURRENT
-			// tempo value to calculate beat length.
-			this.nextNoteTime += 0.25 * this.quarterNoteTime; // Add beat length to last beat time
-			this.currentNote++; // Advance the beat number, wrap to zero
-			if (this.currentNote == 4) {
-				this.currentNote = 0;
-			}
-		},
-		startPlayingRithm : function(){
-			console.log("StartPlayingRithm");
-			
-	        this.playing = true;
-	        var startTime = this.context.currentTime;		
-	       /* var quarterNoteTime = 60 / this.tempo; // Determina negres
-	        var sCompas = quarterNoteTime *4 // Segons que dura un compas*/
-	        this.playSound(this.currentNote, this.nextNoteTime);  
-	        this.nextNote();
-		},
-
 		playMetronome: function(){
 			if(!this.playing){
 				this.quarterNoteTime = 60.0 / this.tempo;
 				this.sCompas = this.quarterNoteTime *4 
 				var interval = (this.getSCompas()/4) * 1000;
 				var self = this
-				this.timerID=setInterval(function(){self.startPlayingRithm();},interval);
+				console.log(interval);
+				this.timerID = setInterval(function(){self.playSound(self.currentNote)},interval);
 				this.playing = !this.playing;
 			}
 		},
+		stopMetronome : function(){
+			if (this.playing) {
+			this.playing = !this.playing;
+			clearInterval(this.timerID);
+			};
+		},
+		playSound: function(currentNote){
+			this.playing = true;
+			var startTime = this.context.currentTime;
 
-		// Modify Tempo
+			audioSource = this.context.createBufferSource();
+			audioSource.connect(this.context.destination);
+
+			if (currentNote == 0 ){              // quarter notes = medium pitch
+				console.log("NOTA 0");
+				audioSource.buffer = this.beep2;
+			}else{                               // other 16th notes = high pitch
+				audioSource.buffer = this.beep1;
+			}
+			audioSource.start();
+			 this.noteFlag();	
+		},
+		noteFlag:function() {
+			this.currentNote++; 
+			if (this.currentNote == 4) {
+				this.currentNote = 0;
+			}
+		},
 		modTempo: function(i){
 			/*this.stopMetronome();*/
-			this.tempo = this.tempo+i;
-			console.log(this.tempo);
+			this.tempo = this.tempo+i;			
 			clearInterval(this.timerID);
 			this.playing = !this.playing;
 			this.playMetronome();
-
-			/*var self = this
-			setTimeout(function(){
-				self.startPlayingRithm();
-			},1000);*/
+			document.getElementById("tempo").innerHTML = this.tempo;
 		},
-		
+		getSCompas: function(){
+			return this.sCompas;
+		},		
 	});
 	return new Manager();	
 });
